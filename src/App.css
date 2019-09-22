@@ -1,0 +1,69 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+.full-height {
+  height: 100%;
+}
+section {
+  border: 1px solid black;
+}
+.category-frame {
+  border: 1px solid black;
+  padding: 0;
+}
+.category-frame .card {
+margin: 10px;
+}
+.card-body {
+  padding: 5px;
+}
+
+.card-title {
+  text-align: center;
+  margin: 0;
+}
+
+.product-display {
+  border: 1px solid black;
+  padding: 0;
+}
+
+.product-display .card {
+  width: 50%;
+  display: inline-block;
+  padding: 10px;
+}
+
+.order-tray {
+  border: 1px solid black;
+}
+/* 
+.table {
+  border-collapse: separate;
+  border-spacing: 5px 0;
+}
+
+
+tr {
+  box-shadow: 0 0 0 2px #dee2e6;
+  border-radius: 2px;
+} */
