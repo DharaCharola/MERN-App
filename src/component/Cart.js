@@ -16,6 +16,66 @@ export default class Cart extends Component {
         name: "test2",
         quantity: 2,
         price: 500
+      },
+      {
+        id: 1,
+        name: "test1",
+        quantity: 1,
+        price: 100
+      },
+      {
+        id: 2,
+        name: "test2",
+        quantity: 2,
+        price: 500
+      },
+      {
+        id: 1,
+        name: "test1",
+        quantity: 1,
+        price: 100
+      },
+      {
+        id: 2,
+        name: "test2",
+        quantity: 2,
+        price: 500
+      },
+      {
+        id: 1,
+        name: "test1",
+        quantity: 1,
+        price: 100
+      },
+      {
+        id: 2,
+        name: "test2",
+        quantity: 2,
+        price: 500
+      },
+      {
+        id: 1,
+        name: "test1",
+        quantity: 1,
+        price: 100
+      },
+      {
+        id: 2,
+        name: "test2",
+        quantity: 2,
+        price: 500
+      },
+      {
+        id: 1,
+        name: "test1",
+        quantity: 1,
+        price: 100
+      },
+      {
+        id: 2,
+        name: "test2",
+        quantity: 2,
+        price: 500
       }
     ]
   };
