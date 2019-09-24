@@ -65,10 +65,23 @@
   padding: 5px;
 }
 
+.card-title {
+  font-size: 16px;
+}
+.card-subtitle {
+  font-size: 12px;
+  padding: 5px;
+}
+
 .card-title,
 .card-subtitle {
   text-align: center;
   margin: 0;
+}
+
+.category-img {
+  width: 211px;
+  height: 130px;
 }
 
 /* Categoty Layout CSS End */
@@ -108,6 +121,11 @@
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 6px transparent;
   background: rgba(0, 0, 0, 0.7);
+}
+
+.product-img {
+  width: 265px;
+  height: 163px;
 }
 
 /* Product Layout CSS End */
@@ -155,6 +173,7 @@
 .order-tray h3 {
   padding: 10px;
   margin: 0;
+  font-weight: bold;
 }
 
 .order-tray::-webkit-scrollbar-track {
@@ -174,5 +193,45 @@
   -webkit-box-shadow: inset 0 0 6px transparent;
   background: rgba(0, 0, 0, 0.7);
 }
+.order-tray tfoot td {
+  position: sticky;
+  bottom: 0;
+  background: white;
+}
 
+.cart-product div {
+  display: inline;
+  height: 100%;
+  float: left;
+  align-items: center;
+}
+
+.cart-product img {
+  width: 24px;
+}
+
+.remove {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  background: #e0e0e0;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: inline-block;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -ms-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.remove:hover {
+  background: #f30;
+}
+.del-container {
+  padding: 10px 5px;
+}
 /* Order Layout CSS End */

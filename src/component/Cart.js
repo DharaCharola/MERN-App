@@ -1,83 +1,10 @@
 import React, { Component } from "react";
 import { Col, Table } from "react-bootstrap";
-import { toCurrency } from "./utill";
+import { toCurrency } from "../helper/utill";
+
 export default class Cart extends Component {
   state = {
-    showBox: null,
-    products: [
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      },
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      },
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      },
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      },
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      },
-      {
-        id: 1,
-        name: "test1",
-        quantity: 1,
-        price: 100
-      },
-      {
-        id: 2,
-        name: "test2",
-        quantity: 2,
-        price: 500
-      }
-    ]
+    showBox: null
   };
 
   handleQauntityBox = (id = null) => {
@@ -86,35 +13,54 @@ export default class Cart extends Component {
 
   chaneQuantity = e => {
     e.preventDefault();
-    let products = [...this.state.products];
+    let products = [...this.props.orderedProducts];
     products = products.map(product =>
-      product.id == e.target.id
+      product.product_id == e.target.id
         ? {
             ...product,
             quantity: e.target.value
           }
         : product
     );
-    this.setState({ products });
+    this.props.chaneQuantity(products);
+  };
+
+  removeItem = product_id => {
+    let orderedProducts = [...this.props.orderedProducts];
+    orderedProducts = orderedProducts.filter(
+      pro => pro.product_id !== product_id
+    );
+    this.props.chaneQuantity(orderedProducts);
   };
 
   renderCartProducts = () => {
-    const { products, showBox } = this.state;
+    const { showBox } = this.state;
+    const { orderedProducts } = this.props;
 
-    return products.map((product, index) => {
+    return orderedProducts.map((product, index) => {
       return (
         <tr key={`tr_${index}`}>
-          <td>
-            {product.name}
-            <p className="price-tag">{toCurrency(product.price)}</p>
+          <td className="cart-product">
+            <div
+              className="del-container"
+              onClick={() => this.removeItem(product.product_id)}
+            >
+              <span className="remove">x</span>
+            </div>
+            <div>
+              {product.product_name}
+              <p className="price-tag">{toCurrency(product.product_price)}</p>
+            </div>
           </td>
           <td className="text-center">
-            {showBox !== product.id && (
-              <span onDoubleClick={() => this.handleQauntityBox(product.id)}>
+            {showBox !== product.product_id && (
+              <span
+                onDoubleClick={() => this.handleQauntityBox(product.product_id)}
+              >
                 {product.quantity}
               </span>
             )}
-            {showBox === product.id && (
+            {showBox === product.product_id && (
               <input
                 min={1}
                 type="number"
@@ -123,19 +69,30 @@ export default class Cart extends Component {
                 value={product.quantity}
                 onChange={this.chaneQuantity}
                 onBlur={() => this.handleQauntityBox(null)}
-                id={product.id}
+                id={product.product_id}
               />
             )}
           </td>
           <td className="text-right">
-            {toCurrency(product.quantity * product.price)}
+            {toCurrency(product.quantity * product.product_price)}
           </td>
         </tr>
       );
     });
   };
 
+  renderNoItems = () => {
+    return (
+      <tr>
+        <td colSpan={4} className="text-center text-muted">
+          <h6>No item in your cart</h6>
+        </td>
+      </tr>
+    );
+  };
   render() {
+    const { orderedProducts } = this.props;
+
     return (
       <Col xs={12} sm={5} md={5} lg={5} className="order-tray">
         <h3 className="text-center">Food On Tray</h3>
@@ -150,13 +107,17 @@ export default class Cart extends Component {
               <th className="text-right">Amount</th>
             </tr>
           </thead>
-          <tbody>{this.renderCartProducts()}</tbody>
+          <tbody>
+            {orderedProducts.length > 0
+              ? this.renderCartProducts()
+              : this.renderNoItems()}
+          </tbody>
           <tfoot>
             <tr>
               <td colSpan={2} className="text-right">
                 <b>Total</b>
               </td>
-              <td className="text-right">{toCurrency(10000)}</td>
+              <td className="text-right">{toCurrency(this.props.total)}</td>
             </tr>
           </tfoot>
         </Table>
