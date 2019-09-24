@@ -32,10 +32,15 @@ export default class Category extends Component {
 
     return categories.map(category => (
       <Card key={category.category_id}>
-        <Card.Img
+        <div
           id={category.category_id}
-          variant="top"
+          className="overlay"
           onClick={this.categorySelection}
+        >
+          View Products
+        </div>
+        <Card.Img
+          variant="top"
           className="category-img"
           src={`${process.env.REACT_APP_SERVER_URL}/images/category_images/${category.category_image}`}
         />

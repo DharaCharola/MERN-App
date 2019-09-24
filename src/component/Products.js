@@ -13,11 +13,17 @@ export default class Products extends Component {
 
     return products.map(product => (
       <Card>
+        <div
+          className="overlay"
+          onClick={() => this.props.orderProduct(product)}
+        >
+          Add to cart
+        </div>
+
         <Card.Img
           variant="top"
           src={`${process.env.REACT_APP_SERVER_URL}/images/product_images/${product.product_image}`}
           className="product-img"
-          onClick={() => this.props.orderProduct(product)}
         />
         <Card.Body>
           <Card.Title>{product.product_name}</Card.Title>

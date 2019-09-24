@@ -26,6 +26,34 @@
 .cart-icon {
   width: 48px;
 }
+.card {
+  cursor: pointer;
+}
+.card:hover > .overlay {
+  display: block;
+}
+.overlay {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+/* #to-show {
+    display: hidden;
+}
+#to-hover:hover > #to-show {
+    display: block; 
+} */
 
 /* Categoty Layout CSS Start */
 
@@ -215,12 +243,12 @@
   font-weight: bold;
   font-size: 16px;
   background: #e0e0e0;
-  padding: 0.5em;
-  font-size: 0.75em;
+  padding: 3px;
+  font-size: 12px;
   display: inline-block;
   border-radius: 100%;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   text-align: center;
   -webkit-transition: all 0.25s linear;
   -moz-transition: all 0.25s linear;
