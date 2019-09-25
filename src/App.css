@@ -262,4 +262,16 @@
 .del-container {
   padding: 10px 5px;
 }
+
+.btn-outline-secondary:hover {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+}
+.btn.btn-outline-secondary {
+  padding: 10px 70px;
+}
+.btn-outline-secondary:focus {
+  box-shadow: none !important;
+}
+
 /* Order Layout CSS End */

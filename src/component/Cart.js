@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Table } from "react-bootstrap";
+import { Col, Table, Button } from "react-bootstrap";
 import { toCurrency } from "../helper/utill";
 
 export default class Cart extends Component {
@@ -33,13 +33,20 @@ export default class Cart extends Component {
     this.props.chaneQuantity(orderedProducts);
   };
 
+  handleKey = e => {
+    if (e.charCode === 45 || e.charCode === 48) {
+      e.preventDefault();
+      return false;
+    }
+  };
+
   renderCartProducts = () => {
     const { showBox } = this.state;
     const { orderedProducts } = this.props;
 
     return orderedProducts.map((product, index) => {
       return (
-        <tr key={`tr_${index}`}>
+        <tr key={`cart_pro_${index}`}>
           <td className="cart-product">
             <div
               className="del-container"
@@ -63,6 +70,7 @@ export default class Cart extends Component {
             {showBox === product.product_id && (
               <input
                 min={1}
+                onKeyPress={this.handleKey}
                 type="number"
                 name="quantity"
                 className="quantity"
@@ -118,6 +126,16 @@ export default class Cart extends Component {
                 <b>Total</b>
               </td>
               <td className="text-right">{toCurrency(this.props.total)}</td>
+            </tr>
+            <tr>
+              <td colSpan={3} className="text-center">
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => this.props.chaneQuantity([])}
+                >
+                  Place Order
+                </Button>
+              </td>
             </tr>
           </tfoot>
         </Table>

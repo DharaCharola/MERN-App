@@ -30,8 +30,8 @@ export default class Category extends Component {
   renderCategories = () => {
     const { categories } = this.state;
 
-    return categories.map(category => (
-      <Card key={category.category_id}>
+    return categories.map((category, index) => (
+      <Card key={`cat_${index}`}>
         <div
           id={category.category_id}
           className="overlay"

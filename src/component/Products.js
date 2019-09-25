@@ -11,8 +11,8 @@ export default class Products extends Component {
   renderProducts = () => {
     const { products } = this.props;
 
-    return products.map(product => (
-      <Card>
+    return products.map((product, index) => (
+      <Card key={`pro_${index}`}>
         <div
           className="overlay"
           onClick={() => this.props.orderProduct(product)}
